@@ -21,7 +21,7 @@ PHP_MINFO_FUNCTION(xxhash)
 	php_info_print_table_start();
 	php_info_print_table_header(2, "xxhash support", "enabled");
 	php_info_print_table_row(2, "extension version", PHP_XXHASH_VERSION);
-	php_info_print_table_row(2, "xxhash release", "r40");
+	php_info_print_table_row(2, "xxhash release", "v0.6.1");
 	php_info_print_table_end();
 }
 

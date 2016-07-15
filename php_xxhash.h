@@ -4,7 +4,7 @@
 extern zend_module_entry xxhash_module_entry;
 #define phpext_xxhash_ptr &xxhash_module_entry
 
-#define PHP_XXHASH_VERSION "2.0"
+#define PHP_XXHASH_VERSION "2.1"
 
 #ifdef PHP_WIN32
 #   define PHP_XXHASH_API __declspec(dllexport)
