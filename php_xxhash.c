@@ -28,7 +28,7 @@ PHP_MINFO_FUNCTION(xxhash)
 PHP_FUNCTION(xxhash32)
 {
     char *arg = NULL;
-    unsigned long long seed;
+    unsigned long long seed = 0;
     size_t arg_len, len;
     zend_string *strg;
 	unsigned int sum;
@@ -54,7 +54,7 @@ PHP_FUNCTION(xxhash32)
 PHP_FUNCTION(xxhash64)
 {
 	char *arg = NULL;
-	unsigned long long seed;
+	unsigned long long seed = 0;
     size_t arg_len, len;
     zend_string *strg;
 	unsigned long long sum;
