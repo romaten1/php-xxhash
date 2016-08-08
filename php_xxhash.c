@@ -28,16 +28,21 @@ PHP_MINFO_FUNCTION(xxhash)
 PHP_FUNCTION(xxhash32)
 {
     char *arg = NULL;
+    unsigned long long seed;
     size_t arg_len, len;
     zend_string *strg;
 	unsigned int sum;
 
-    if (zend_parse_parameters(ZEND_NUM_ARGS(), "s", &arg, &arg_len) == FAILURE || arg_len < 1) {
+    if (zend_parse_parameters(ZEND_NUM_ARGS(), "s|l", &arg, &arg_len, &seed) == FAILURE || arg_len < 1) {
         return;
     }
 
+    if (!seed) {
+        seed = 0;
+    }
+
 	// compute the checksum
-	sum = XXH32(arg, arg_len, 0);
+	sum = XXH32(arg, arg_len, seed);
 
 	//convert to a hex string
 	strg = strpprintf(0, "%08x", sum);
@@ -49,16 +54,21 @@ PHP_FUNCTION(xxhash32)
 PHP_FUNCTION(xxhash64)
 {
 	char *arg = NULL;
+	unsigned long long seed;
     size_t arg_len, len;
     zend_string *strg;
 	unsigned long long sum;
 
-    if (zend_parse_parameters(ZEND_NUM_ARGS(), "s", &arg, &arg_len) == FAILURE || arg_len < 1) {
+    if (zend_parse_parameters(ZEND_NUM_ARGS(), "s|l", &arg, &arg_len, &seed) == FAILURE || arg_len < 1) {
         return;
     }
 
+    if (!seed) {
+        seed = 0;
+    }
+
 	// compute the checksum
-	sum = XXH64(arg, arg_len, 0);
+	sum = XXH64(arg, arg_len, seed);
 
 	//convert to a hex string
 	strg = strpprintf(0, "%08x%08x", (U32)(sum >> 32), (U32)sum);
