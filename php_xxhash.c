@@ -45,10 +45,10 @@ PHP_FUNCTION(xxhash32)
 	sum = XXH32(arg, arg_len, seed);
 
 	//convert to a hex string
-	strg = strpprintf(0, "%08x", sum);
+	//strg = strpprintf(0, "%08x", sum);
 
 	// return the checksum
-	RETURN_STR(strg);
+	RETURN_STR(sum);
 }
 
 PHP_FUNCTION(xxhash64)
@@ -71,10 +71,13 @@ PHP_FUNCTION(xxhash64)
 	sum = XXH64(arg, arg_len, seed);
 
 	//convert to a hex string
-	strg = strpprintf(0, "%08x%08x", (U32)(sum >> 32), (U32)sum);
+	//strg = strpprintf(0, "%08x%08x", (U32)(sum >> 32), (U32)sum);
+
+    //convert to a signed long long
+    sum = (signed long long)sum
 
 	// return the checksum
-	RETURN_STR(strg);
+	RETURN_LONG(sum);
 }
 
 const zend_function_entry xxhash_functions[] = {
