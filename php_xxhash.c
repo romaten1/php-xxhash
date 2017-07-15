@@ -74,7 +74,7 @@ PHP_FUNCTION(xxhash64)
 	//strg = strpprintf(0, "%08x%08x", (U32)(sum >> 32), (U32)sum);
 
     //convert to a signed long long
-    sum = (signed long long)sum
+    sum = (signed long long)sum;
 
 	// return the checksum
 	RETURN_LONG(sum);
