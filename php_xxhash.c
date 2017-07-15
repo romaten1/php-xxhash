@@ -45,10 +45,10 @@ PHP_FUNCTION(xxhash32)
 	sum = XXH32(arg, arg_len, seed);
 
 	//convert to a hex string
-	//strg = strpprintf(0, "%08x", sum);
+	strg = strpprintf(0, "%08x", sum);
 
 	// return the checksum
-	RETURN_STR(sum);
+	RETURN_STR(strg);
 }
 
 PHP_FUNCTION(xxhash64)
