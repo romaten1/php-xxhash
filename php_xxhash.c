@@ -74,9 +74,28 @@ PHP_FUNCTION(xxhash64)
 	RETURN_LONG(sum);
 }
 
+ // the first argument is the name of this arginfo block
+    // the second argument is always zero (reserved for future use)
+    // the third argument is if it returns a reference
+    // the fourth argument is how many arguments are required
+ZEND_BEGIN_ARG_INFO_EX(arginfo_xxhash32, 0, 0, 1)
+    // the first argument to this
+	ZEND_ARG_INFO(0, hash_string)
+ZEND_END_ARG_INFO()
+
+// the first argument is the name of this arginfo block
+    // the second argument is always zero (reserved for future use)
+    // the third argument is if it returns a reference
+    // the fourth argument is how many arguments are required
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_xxhash64, 0, 0, 1)
+    // the first argument to this
+	ZEND_ARG_INFO(0, hash_string)
+ZEND_END_ARG_INFO()
+
 const zend_function_entry xxhash_functions[] = {
-	ZEND_FE(xxhash32, NULL)
-	ZEND_FE(xxhash64, NULL)
+	ZEND_FE(xxhash32, arginfo_xxhash32)
+	ZEND_FE(xxhash64, arginfo_xxhash64)
 	PHP_FE_END
 };
 
